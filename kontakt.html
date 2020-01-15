@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slatkoteka</title>
+  <link href="css/flexboxgrid.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo"><a href="index.html">Slatkoteka</a></h1>
+    <ul class="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="onama.html">About</a></li>
+      <li><a href="galerija.html">Gallery</a></li>
+      <li><a href="kontakt.html">Contact</a></li>
+      <link href="css/header.css" rel="stylesheet" />
+    </ul>
+  </header>
+
+  <div class="proizvodi" >
+    <div class="center">
+      <h2>Narucite</h2>
+      <p></p>
+      <p></p>
+    </div>
+    <div class="center">
+      <form id="forma" method="post" action="">
+        <div class="form-group col-sm-12">
+          <label for="ime" class="h4">Ime i prezime: </label>
+          <p></p>
+          <input name="ime" type="text" class="form-control" id="ime" placeholder="Name and surname" required>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="email" class="h4">Email:</label>
+          <p></p>
+          <input name="email" type="email" class="form-control" id="email" placeholder="Email" email>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="komponenta" class="h4">Krofna:</label>
+          <p></p>
+          <select name="krofna" class="form-control" id="komponenta" required>
+            <option value="milka">Milka</option>
+            <option value="mocart">Mocart</option>
+            <option value="mamamia">Mama Mia</option>
+            <option value="tip1">Krofna 1</option>
+            <option value="tip2">Krofna 2</option>
+            <option value="tip3">Krofna 3</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="tel" class="h4">Broj Telefona:</label>
+          <p></p>
+          <input name="tel" type="number" class="form-control" id="tel" placeholder="Phone number" required>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="poruka" class="h4 ">Napomena:</label>
+          <p></p>
+          <textarea name="poruka" id="poruka" class="form-control" rows="5" placeholder="Question" required></textarea>
+        </div>
+        <input class="btn btn-info" type="submit" value="Submit" />
+      </form>
+      <div class="row">
+        <button class="btn btn-info" onclick="document.getElementById('date').innerHTML=Date()">Pogledajte trenutno
+          vreme</button>
+        <p id="date"></p>
+      </div>
+      <div id="srecni-broj"></div>
+    </div>
+  </div>
+  <footer >
+    <div class="container">
+      <div class="social-icon">
+        <div class="col-md-4">
+          <ul class="social-network">
+            <li><a href="https://www.facebook.com/Slatkoteka/" class="fb prelaz" title="Facebook"><i
+                  class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/slatkoteka/" class="instagram prelaz" title="Instagram"><i
+                  class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="prava">
+          &copy; Slatkoteka
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/poruke.js"></script>
+  <script type="text/javascript">
+    $.validator.setDefaults({
+      submitHandler: function () {
+        var vrednost = $('#komponenta').val();
+        var dat = new Date();
+        dat.setDate(dat.getDate());
+        var dd = dat.getDate() + 1;
+        var mm = dat.getMonth() ;
+        var y = dat.getFullYear();
+
+        var formatirano = dd + '/' + mm + '/' + y;
+        var text = "Izabrali ste ";
+        var text2 = ". Kontaktirace vas uskoro neko iz našeg call centra! Najkasnije do: ";
+        var text3 = ". Zelimo vam prijatan dan!";
+        var res = text.concat(vrednost, text2, formatirano, text3);
+        alert(res);
+      }
+    });
+
+    $(document).ready(function () {
+      $("#forma").validate();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      var broj = document.getElementById("srecni-broj");
+      broj.innerHTML = 'Tvoj srecni broj je ' + Math.floor(Math.random() * 100 + 1);
+    });
+  </script>
+</body>
+
+</html>
